@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        MYSQL_HOST = 'your.mysql.server.ip'
+        // MYSQL_HOST = 'your.mysql.server.ip'
+        MYSQL_HOST =http://34.228.25.181/adminer.php?server=&username=myuser
         MYSQL_PORT = '3306'
         MYSQL_DB   = 'jenkins_db'
     }
