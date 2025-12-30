@@ -2,20 +2,52 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-        http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+      http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
+    <!-- Create tables -->
     <changeSet id="001" author="jenkins">
-        <sqlFile path="../sql/proc_cleanup.sql" relativeToChangelogFile="true"/>
+        <sqlFile
+            path="../sql/create_table.sql"
+            relativeToChangelogFile="true"
+            splitStatements="true"
+            stripComments="true"/>
     </changeSet>
 
+    <!-- Insert initial users -->
     <changeSet id="002" author="jenkins">
-        <sqlFile path="../sql/proc_create_users.sql" relativeToChangelogFile="true"/>
+        <sqlFile
+            path="../sql/insert_users.sql"
+            relativeToChangelogFile="true"
+            splitStatements="true"
+            stripComments="true"/>
     </changeSet>
 
+    <!-- Stored procedures -->
     <changeSet id="003" author="jenkins">
-        <sqlFile path="../sql/proc_update_orders.sql" relativeToChangelogFile="true"/>
+        <sqlFile
+            path="../sql/proc_cleanup.sql"
+            relativeToChangelogFile="true"
+            splitStatements="false"
+            stripComments="true"/>
+    </changeSet>
+
+    <changeSet id="004" author="jenkins">
+        <sqlFile
+            path="../sql/proc_create_users.sql"
+            relativeToChangelogFile="true"
+            splitStatements="false"
+            stripComments="true"/>
+    </changeSet>
+
+    <changeSet id="005" author="jenkins">
+        <sqlFile
+            path="../sql/proc_update_orders.sql"
+            relativeToChangelogFile="true"
+            splitStatements="false"
+            stripComments="true"/>
     </changeSet>
 
 </databaseChangeLog>
+
 
