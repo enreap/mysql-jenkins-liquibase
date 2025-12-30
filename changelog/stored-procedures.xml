@@ -13,15 +13,6 @@
             stripComments="true"/>
     </changeSet>
 
-</databaseChangeLog>
-
-<!-- <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="
-        http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
-
     <changeSet id="sp-1" author="jenkins">
         <sqlFile 
             path="../sql/proc_cleanup.sql" 
@@ -42,4 +33,4 @@
             splitStatements="false"/>
     </changeSet>
 
-</databaseChangeLog> -->
+</databaseChangeLog>
