@@ -5,24 +5,40 @@
       http://www.liquibase.org/xml/ns/dbchangelog
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
-    <changeSet id="sp-1" author="jenkins">
-        <sqlFile 
-            path="../sql/proc_cleanup.sql" 
-            relativeToChangelogFile="true" 
-            splitStatements="false"/>
-    </changeSet>
-    <changeSet id="sp-2" author="jenkins">
-        <sqlFile 
-            path="../sql/proc_create_users.sql" 
-            relativeToChangelogFile="true" 
-            splitStatements="false"/>
+    <!-- Create tables and seed data -->
+    <changeSet id="001" author="jenkins">
+        <sqlFile
+            path="../sql/create_table.sql"
+            relativeToChangelogFile="true"
+            splitStatements="false"
+            stripComments="true"/>
     </changeSet>
 
-    <changeSet id="sp-3" author="jenkins">
-        <sqlFile 
-            path="../sql/proc_update_orders.sql" 
-            relativeToChangelogFile="true" 
-            splitStatements="false"/>
+    <!-- Cleanup logs procedure -->
+    <changeSet id="002" author="jenkins">
+        <sqlFile
+            path="../sql/proc_cleanup.sql"
+            relativeToChangelogFile="true"
+            splitStatements="false"
+            stripComments="true"/>
+    </changeSet>
+
+    <!-- Create users procedure -->
+    <changeSet id="003" author="jenkins">
+        <sqlFile
+            path="../sql/proc_create_users.sql"
+            relativeToChangelogFile="true"
+            splitStatements="false"
+            stripComments="true"/>
+    </changeSet>
+
+    <!-- Update orders procedure -->
+    <changeSet id="004" author="jenkins">
+        <sqlFile
+            path="../sql/proc_update_orders.sql"
+            relativeToChangelogFile="true"
+            splitStatements="false"
+            stripComments="true"/>
     </changeSet>
 
 </databaseChangeLog>
