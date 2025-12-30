@@ -22,9 +22,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
-    <!-- <changeSet id="sp-1" author="jenkins">
-        <sqlFile path="sql/proc_cleanup.sql"/>
-    </changeSet> -->
     <changeSet id="sp-1" author="jenkins">
         <sqlFile 
             path="../sql/proc_cleanup.sql" 
@@ -44,15 +41,5 @@
             relativeToChangelogFile="true" 
             splitStatements="false"/>
     </changeSet>
-
-
-<!-- 
-    <changeSet id="sp-2" author="jenkins">
-        <sqlFile path="sql/proc_create_users.sql"/>
-    </changeSet> -->
-<!-- 
-    <changeSet id="sp-3" author="jenkins">
-        <sqlFile path="sql/proc_update_orders.sql"/>
-    </changeSet> -->
 
 </databaseChangeLog> -->
