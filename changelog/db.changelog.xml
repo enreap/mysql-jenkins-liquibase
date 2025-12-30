@@ -10,14 +10,14 @@
     <changeSet id="001" author="dev">
         <sqlFile path="../sql/create_table.sql"
                  relativeToChangelogFile="true"
-                 splitStatements="false"/>
+                 splitStatements="true"/>
     </changeSet>
 
     <!-- Seed data -->
     <changeSet id="002" author="dev">
         <sqlFile path="../sql/insert_users.sql"
                  relativeToChangelogFile="true"
-                 splitStatements="false"/>
+                 splitStatements="true"/>
     </changeSet>
 
     <!-- Stored procedures -->
