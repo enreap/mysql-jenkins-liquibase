@@ -1,7 +1,5 @@
-DROP PROCEDURE IF EXISTS cleanup_old_logs;
-
-CREATE PROCEDURE cleanup_old_logs()
+DROP PROCEDURE IF EXISTS cleanup_logs;
+CREATE PROCEDURE cleanup_logs()
 BEGIN
-    DELETE FROM logs
-    WHERE created_at < NOW() - INTERVAL 30 DAY;
+    DELETE FROM logs WHERE created_at < NOW() - INTERVAL 7 DAY;
 END;
