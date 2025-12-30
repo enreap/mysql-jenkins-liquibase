@@ -3,11 +3,14 @@ pipeline {
 
     environment {
         LIQUIBASE_HOME = '/opt/liquibase'
-        JDBC_DRIVER = '/usr/share/java/mysql-connector-j-9.5.0.jar'
+        // JDBC_DRIVER = '/usr/share/java/mysql-connector-j-9.5.0.jar'
+        JDBC_DRIVER= '/opt/liquibase/lib/mysql-connector-j-9.4.0.jar'
+
         DB_URL = 'jdbc:mysql://mysql-server:3306/mydb'   // replace with your DB host
-        DB_USER = 'root'                                 // DB username
-        DB_PASSWORD = 'root'                             // DB password
-        CHANGELOG_FILE = 'db-changelog.xml'             // Liquibase changelog
+        DB_URL= 'jdbc:mysql://44.220.159.252/adminer.php?:3306/jenkins_db'
+        DB_USER = 'myuser'                                 // DB username
+        DB_PASSWORD = 'MyP@ssw0rd123'                             // DB password
+        CHANGELOG_FILE = 'changelog/changelog.xml'             // Liquibase changelog
         STORED_PROC_FILE = 'stored-procedures.sql'      // SQL file with stored procedures
     }
 
