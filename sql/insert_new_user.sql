@@ -1,2 +1,9 @@
-INSERT INTO users (username, email, company, domain, team)
-VALUES ('devteam', 'devteam@enreap.com', 'enreap', 'devopscloud', 'devopsteam');
+INSERT INTO users (username, email) VALUES
+('suhash', 'suhash@enreap.com'),
+('nitish', 'nitish@enreap.com'),  
+('sangram', 'sangram@enreap.com');
+
+INSERT INTO orders (status) VALUES
+('NEW'),
+('PROCESSING'),
+('DONE');
