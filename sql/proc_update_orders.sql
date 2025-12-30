@@ -1,11 +1,5 @@
-DROP PROCEDURE IF EXISTS update_order_status;
-
-CREATE PROCEDURE update_order_status(
-    IN p_order_id INT,
-    IN p_status VARCHAR(20)
-)
+DROP PROCEDURE IF EXISTS update_order;
+CREATE PROCEDURE update_order(IN oid INT, IN stat VARCHAR(20))
 BEGIN
-    UPDATE orders
-    SET status = p_status
-    WHERE id = p_order_id;
+    UPDATE orders SET status = stat WHERE id = oid;
 END;
