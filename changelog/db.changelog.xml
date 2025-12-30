@@ -2,15 +2,20 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="
-    http://www.liquibase.org/xml/ns/dbchangelog
-    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
     <changeSet id="001" author="jenkins">
-        <sqlFile
-            path="../sql/create_table.sql"
-            relativeToChangelogFile="true"
-            splitStatements="true"
-            stripComments="true"/>
+        <sqlFile path="../sql/proc_cleanup.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="002" author="jenkins">
+        <sqlFile path="../sql/proc_create_users.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="003" author="jenkins">
+        <sqlFile path="../sql/proc_update_orders.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
 </databaseChangeLog>
+
