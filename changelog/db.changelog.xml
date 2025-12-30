@@ -1,53 +1,43 @@
+Liquibase Changelog (IMPORTANT PART)
+changelog/db.changelog.xml
 <databaseChangeLog
-    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
-      http://www.liquibase.org/xml/ns/dbchangelog
-      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
-    <!-- Create tables -->
-    <changeSet id="001" author="jenkins">
-        <sqlFile
-            path="../sql/create_table.sql"
-            relativeToChangelogFile="true"
-            splitStatements="true"
-            stripComments="true"/>
+    <!-- Tables -->
+    <changeSet id="001" author="dev">
+        <sqlFile path="../sql/create_tables.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"/>
     </changeSet>
 
-    <!-- Insert initial users -->
-    <changeSet id="002" author="jenkins">
-        <sqlFile
-            path="../sql/insert_users.sql"
-            relativeToChangelogFile="true"
-            splitStatements="true"
-            stripComments="true"/>
+    <!-- Seed data -->
+    <changeSet id="002" author="dev">
+        <sqlFile path="../sql/insert_sample_data.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"/>
     </changeSet>
 
     <!-- Stored procedures -->
-    <changeSet id="003" author="jenkins">
-        <sqlFile
-            path="../sql/proc_cleanup.sql"
-            relativeToChangelogFile="true"
-            splitStatements="false"
-            stripComments="true"/>
+    <changeSet id="003" author="dev">
+        <sqlFile path="../sql/proc_cleanup.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"/>
     </changeSet>
 
-    <changeSet id="004" author="jenkins">
-        <sqlFile
-            path="../sql/proc_create_users.sql"
-            relativeToChangelogFile="true"
-            splitStatements="false"
-            stripComments="true"/>
+    <changeSet id="004" author="dev">
+        <sqlFile path="../sql/proc_create_user.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"/>
     </changeSet>
 
-    <changeSet id="005" author="jenkins">
-        <sqlFile
-            path="../sql/proc_update_orders.sql"
-            relativeToChangelogFile="true"
-            splitStatements="false"
-            stripComments="true"/>
+    <changeSet id="005" author="dev">
+        <sqlFile path="../sql/proc_update_order.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="false"/>
     </changeSet>
 
 </databaseChangeLog>
-
-
