@@ -1,19 +1,13 @@
--- Create users table if not exists
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50),
-    email VARCHAR(100),
-    company VARCHAR(50),
-    domain VARCHAR(50),
-    team VARCHAR(50)
-);
+DROP PROCEDURE IF EXISTS add_user;
 
--- Insert initial user data
-INSERT INTO users (username, email, company, domain, team)
-VALUES 
-('babu', 'babu@enreap.com', 'enreap', 'devops cloud', 'devops'),
-('avinash', 'avinash@enreap.com', 'enreap', 'devops cloud', 'devops'),
-('ketki', 'ketki@enreap.com', 'enreap', 'devops cloud', 'devops'),
-('suhas', 'suhas@enreap.com', 'enreap', 'devops cloud', 'devops'),
-('sangram', 'sangram@enreap.com', 'enreap', 'devops cloud', 'devops'),
-('nithis', 'nithis@enreap.com', 'enreap', 'devops cloud', 'devops');
+CREATE PROCEDURE add_user(
+    IN p_username VARCHAR(50),
+    IN p_email VARCHAR(100),
+    IN p_company VARCHAR(50),
+    IN p_domain VARCHAR(50),
+    IN p_team VARCHAR(50)
+)
+BEGIN
+    INSERT INTO users(username, email, company, domain, team)
+    VALUES (p_username, p_email, p_company, p_domain, p_team);
+END;
