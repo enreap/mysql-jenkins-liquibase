@@ -8,14 +8,14 @@
 
     <!-- Tables -->
     <changeSet id="001" author="dev">
-        <sqlFile path="../sql/create_tables.sql"
+        <sqlFile path="../sql/create_table.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"/>
     </changeSet>
 
     <!-- Seed data -->
     <changeSet id="002" author="dev">
-        <sqlFile path="../sql/insert_sample_data.sql"
+        <sqlFile path="../sql/insert_users.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"/>
     </changeSet>
@@ -28,13 +28,13 @@
     </changeSet>
 
     <changeSet id="004" author="dev">
-        <sqlFile path="../sql/proc_create_user.sql"
+        <sqlFile path="../sql/proc_create_users.sql"
                  relativeToChangelogFile="true"
                  splitStatements="false"/>
     </changeSet>
 
     <changeSet id="005" author="dev">
-        <sqlFile path="../sql/proc_update_order.sql"
+        <sqlFile path="../sql/proc_update_orders.sql"
                  relativeToChangelogFile="true"
                  splitStatements="false"/>
     </changeSet>
