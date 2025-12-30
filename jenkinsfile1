@@ -1,0 +1,199 @@
+pipeline {
+
+    agent any
+ 
+    environment {
+
+        GIT_REPO_URL = 'https://github.com/enreap/mysql-jenkins-liquibase.git'
+
+        BRANCH_NAME  = 'main'
+ 
+        // Jenkins tool configurations
+
+        MAVEN_HOME = tool 'maven'
+
+        JAVA_HOME  = tool 'jdk-21'
+
+        LIQUIBASE_HOME = '/opt/liquibase'
+
+        // JDBC_DRIVER = '/usr/share/java/mysql-connector-j-9.5.0.jar'
+
+        JDBC_DRIVER= '/opt/liquibase/lib/mysql-connector-j-9.4.0.jar'
+ 
+        // DB_URL = 'jdbc:mysql://mysql-server:3306/mydb'   // replace with your DB host
+
+        DB_URL= 'jdbc:mysql://44.220.159.252:3306/jenkins_db'
+
+        DB_USER = 'myuser'                                 // DB username
+
+        DB_PASSWORD = 'MyP@ssw0rd123'                             // DB password
+
+        CHANGELOG_FILE = 'changelog/db.changelog.xml'             // Liquibase changelog
+
+        // STORED_PROC_FILE = 'stored-procedures.sql'      // SQL file with stored procedures
+
+        // STORED_PROC_FILES = [
+
+        //     "sql/proc_cleanup.sql",
+
+        //     "sql/proc_create_users.sql",
+
+        //     "sql/proc_update_orders.sql"
+
+        // ]
+
+    }
+ 
+    stages {
+ 
+        stage('Checkout') {
+
+            steps {
+
+                echo "Cloning code from ${GIT_REPO_URL} (branch: ${BRANCH_NAME})"
+
+                git branch: "${BRANCH_NAME}", url: "${GIT_REPO_URL}"
+
+            }
+
+        }        
+ 
+        stage('Liquibase Status') {
+
+            steps {
+
+                sh """
+
+                ${LIQUIBASE_HOME}/liquibase \
+
+                    --classpath=${JDBC_DRIVER} \
+
+                    --changeLogFile=${CHANGELOG_FILE} \
+
+                    --url=${DB_URL} \
+
+                    --username=${DB_USER} \
+
+                    --password=${DB_PASSWORD} \
+
+                    status
+
+                """
+
+            }
+
+        }
+
+        stage('Execute Stored Procedures') {
+
+            steps {
+
+                script {
+
+                    STORED_PROC_FILES = [
+
+                        "sql/proc_cleanup.sql",
+
+                        "sql/proc_create_users.sql",
+
+                        "sql/proc_update_orders.sql"
+
+                    ]
+ 
+                    for (file in STORED_PROC_FILES) {
+
+                         sh """
+
+                         ${LIQUIBASE_HOME}/liquibase \
+
+                             --classpath=${JDBC_DRIVER} \
+
+                             --changeLogFile=${file} \
+
+                             --url=${DB_URL} \
+
+                             --username=${DB_USER} \
+
+                             --password=${DB_PASSWORD} \
+
+                             update
+
+                         """
+
+                    }
+
+                }
+
+            }
+
+        }
+ 
+ 
+        // stage('Execute Stored Procedures') {
+
+        //     steps {
+
+        //         sh """
+
+        //         # Run stored procedures via Liquibase
+
+        //         ${LIQUIBASE_HOME}/liquibase \
+
+        //             --classpath=${JDBC_DRIVER} \
+
+        //             --changeLogFile=${STORED_PROC_FILE} \
+
+        //             --url=${DB_URL} \
+
+        //             --username=${DB_USER} \
+
+        //             --password=${DB_PASSWORD} \
+
+        //             update
+
+        //         """
+
+        //     }
+
+        // }
+ 
+        stage('Liquibase Update') {
+
+            steps {
+
+                sh """
+
+                ${LIQUIBASE_HOME}/liquibase \
+
+                    --classpath=${JDBC_DRIVER} \
+
+                    --changeLogFile=${CHANGELOG_FILE} \
+
+                    --url=${DB_URL} \
+
+                    --username=${DB_USER} \
+
+                    --password=${DB_PASSWORD} \
+
+                    update
+
+                """
+
+            }
+
+        }
+ 
+        stage('Archive Reports') {
+
+            steps {
+
+                archiveArtifacts artifacts: '**/*.xml', allowEmptyArchive: true
+
+            }
+
+        }
+
+    }
+
+}
+ 
