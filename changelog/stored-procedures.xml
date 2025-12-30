@@ -6,14 +6,6 @@
       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
     <changeSet id="sp-1" author="jenkins">
-        <sqlFile
-            path="../sql/proc_cleanup.sql"
-            relativeToChangelogFile="true"
-            splitStatements="false"
-            stripComments="true"/>
-    </changeSet>
-
-    <changeSet id="sp-1" author="jenkins">
         <sqlFile 
             path="../sql/proc_cleanup.sql" 
             relativeToChangelogFile="true" 
