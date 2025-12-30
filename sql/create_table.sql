@@ -1,21 +1,3 @@
--- -- Create users table
--- CREATE TABLE IF NOT EXISTS users (
---     id BIGINT AUTO_INCREMENT PRIMARY KEY,
---     username VARCHAR(100) NOT NULL UNIQUE,
---     email VARCHAR(150) NOT NULL UNIQUE,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
-
--- -- Create orders table
--- CREATE TABLE IF NOT EXISTS orders (
---     id BIGINT AUTO_INCREMENT PRIMARY KEY,
---     user_id BIGINT NOT NULL,
---     order_total DECIMAL(10,2) NOT NULL,
---     status VARCHAR(50) NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     CONSTRAINT fk_orders_users
---         FOREIGN KEY (user_id) REFERENCES users(id)
--- );
 -- Create users table if not exists
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
