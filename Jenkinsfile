@@ -11,7 +11,12 @@ pipeline {
         DB_USER = 'myuser'                                 // DB username
         DB_PASSWORD = 'MyP@ssw0rd123'                             // DB password
         CHANGELOG_FILE = 'changelog/changelog.xml'             // Liquibase changelog
-        STORED_PROC_FILE = 'stored-procedures.sql'      // SQL file with stored procedures
+        // STORED_PROC_FILE = 'stored-procedures.sql'      // SQL file with stored procedures
+        STORED_PROC_FILES = [
+            "proc_cleanup.sql",
+            "proc_create_users.sql",
+            "proc_update_orders.sql"
+        ]
     }
 
     stages {
