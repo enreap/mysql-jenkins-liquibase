@@ -38,5 +38,12 @@
                  relativeToChangelogFile="true"
                  splitStatements="false"/>
     </changeSet>
+  
+    <changeSet id="006" author="dev">
+        <sqlFile  path="../sql/insert_new_user.sql"
+        relativeToChangelogFile="true"
+        splitStatements="true"
+        stripComments="true"/>
+    </changeSet>
 
 </databaseChangeLog>
