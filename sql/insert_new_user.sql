@@ -4,6 +4,6 @@ INSERT INTO users (username, email) VALUES
 ('sangram', 'sangram@enreap.com');
 
 INSERT INTO orders (status) VALUES
-('NEW'),
-('PROCESSING'),
-('DONE');
+('NEW1'),
+('PROCESSING1'),
+('DONE1');
