@@ -6,12 +6,12 @@
     http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
   
-    <changeSet id="000-create-database" author="dev">
+    <!-- <changeSet id="000-create-database" author="dev">
         <sql>CREATE DATABASE IF NOT EXISTS production;</sql>
         <rollback>
             DROP DATABASE IF EXISTS production;
         </rollback>
-    </changeSet>
+    </changeSet> -->
 
     <!-- Tables -->
     <changeSet id="001" author="dev">
