@@ -7,55 +7,42 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
 
     <!-- Tables -->
-    <changeSet id="001-create-tables" author="dev">
-        <sqlFile path="sql/create_table.sql"
+    <changeSet id="001" author="dev">
+        <sqlFile path="../sql/create_table.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"/>
     </changeSet>
 
     <!-- Seed data -->
-    <changeSet id="002-insert-users" author="dev">
-        <sqlFile path="sql/insert_users.sql"
+    <changeSet id="002" author="dev">
+        <sqlFile path="../sql/insert_users.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"/>
     </changeSet>
 
-    <!-- Stored procedures (DROP first) -->
-    <changeSet id="003-drop-proc-cleanup" author="dev">
-        <sql>DROP PROCEDURE IF EXISTS cleanup_logs</sql>
-    </changeSet>
-
-    <changeSet id="004-create-proc-cleanup" author="dev">
-        <sqlFile path="sql/proc_cleanup.sql"
+    <!-- Stored procedures -->
+    <changeSet id="003" author="dev">
+        <sqlFile path="../sql/proc_cleanup.sql"
                  relativeToChangelogFile="true"
                  splitStatements="false"/>
     </changeSet>
 
-    <changeSet id="005-drop-proc-create-users" author="dev">
-        <sql>DROP PROCEDURE IF EXISTS create_user</sql>
-    </changeSet>
-
-    <changeSet id="006-create-proc-create-users" author="dev">
-        <sqlFile path="sql/proc_create_users.sql"
+    <changeSet id="004" author="dev">
+        <sqlFile path="../sql/proc_create_users.sql"
                  relativeToChangelogFile="true"
                  splitStatements="false"/>
     </changeSet>
 
-    <changeSet id="007-drop-proc-update-orders" author="dev">
-        <sql>DROP PROCEDURE IF EXISTS update_orders</sql>
-    </changeSet>
-
-    <changeSet id="008-create-proc-update-orders" author="dev">
-        <sqlFile path="sql/proc_update_orders.sql"
+    <changeSet id="005" author="dev">
+        <sqlFile path="../sql/proc_update_orders.sql"
                  relativeToChangelogFile="true"
                  splitStatements="false"/>
     </changeSet>
-
-    <!-- Additional inserts -->
-    <changeSet id="009-insert-new-user" author="dev">
-        <sqlFile path="sql/insert_new_user.sql"
-                 relativeToChangelogFile="true"
-                 splitStatements="true"/>
+  
+    <changeSet id="006" author="dev">
+        <sqlFile  path="../sql/insert_new_user.sql"
+                  relativeToChangelogFile="true"
+                  splitStatements="true"/>
     </changeSet>
 
 </databaseChangeLog>
