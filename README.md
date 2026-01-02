@@ -88,44 +88,5 @@ Username: xxxxx
 
 Password: xxxxx
 
-Jenkins file 
 
-pipeline {
 
-    agent any
-
-environment {
-    LIQUIBASE_HOME = '/opt/liquibase'
-    JDBC_DRIVER = '/opt/liquibase/lib/mysql-connector-j.jar'
-
-    DB_URL = 'jdbc:mysql://MYSQL_HOST:3306/poc_db'
-    DB_USER = 'poc_user'
-    DB_PASSWORD = 'poc_pass'
-
-    CHANGELOG_FILE = 'changelog/db.changelog.xml'
-}
-
-stages {
-    stage('Checkout') {
-        steps {
-            git url: '<https://github.com/your-org/stored-procedure-poc.git',>
-                branch: 'main'
-        }
-    }
-
-    stage('Deploy Stored Procedures') {
-        steps {
-            sh """
-            ${LIQUIBASE_HOME}/liquibase \\
-              --classpath=${JDBC_DRIVER} \\
-              --changeLogFile=${CHANGELOG_FILE} \\
-              --url=${DB_URL} \\
-              --username=${DB_USER} \\
-              --password=${DB_PASSWORD} \\
-              update
-            """
-        }
-    }
-}
-
-}
